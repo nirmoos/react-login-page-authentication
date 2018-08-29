@@ -2,13 +2,17 @@ import axios from 'axios';
 
 import { call, put } from 'redux-saga/effects';
 
+import { update_store } from '../Actions';
+
 export function* validateLogin (action) {
     try {
         let responseToken = yield call(fetchTokenPromise, action);
         let token = responseToken.data.user.authentication_token;
         // console.log(responseToken);
         let responseUsers = yield call(fetchUsersPromise, token);
-        console.log(responseUsers);
+        // console.log(responseUsers);
+        let users = responseUsers.data.users;
+        yield put(update_store(users));
     } catch (e) {
         console.log(e);
     }

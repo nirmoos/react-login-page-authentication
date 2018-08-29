@@ -8,7 +8,7 @@ import './index.css';
 import './Utils/FontAwsome';
 
 import rootReducer from './Reducers';
-import saga from './Sagas';
+import rootSaga from './Sagas';
 
 import LoginForm from './Containers/LoginForm';
 
@@ -16,7 +16,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
-sagaMiddleware.run(saga);
+sagaMiddleware.run(rootSaga);
 
  ReactDOM.render(
      <Provider store={store}>

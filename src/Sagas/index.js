@@ -1,7 +1,7 @@
 import { takeEvery } from 'redux-saga/effects';
 
-import * as allsagas from './allsagas';
+import * as sagas from './sagas';
 
-export default function* saga () {
-    yield takeEvery('VALIDATE_LOGIN', allsagas.validateLogin);
+export default function* rootSaga () {
+    yield takeEvery('VALIDATE_LOGIN', sagas.validateLogin);
 }

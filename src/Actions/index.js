@@ -6,3 +6,10 @@ export function validate_login (email, password) {
         password: password,
     }
 }
+
+export function update_store (users) {
+    return {
+        type: 'UPDATE_STORE',
+        users: users,
+    }
+}
