@@ -1,25 +1,51 @@
 .login-form-container {
 	width: 30%;
-	border: 1px solid black;
-	margin: auto;
-	margin-top: 10%;
+	border: 1px solid #00cccc;
+	margin: 50px auto 0px;
 	text-align: center;
 }
-input {
-	width: 90%;
-	margin: 10px 0;
-    border-radius: 2px;
-    border: 0.5px solid black;
-    padding: 5px;
+.login-form {
+     padding: 0px 40px 20px 0;
 }
-input[type="submit"] {
-	width: 30%;
+.email {
+     width: 100%;
+     margin: 50px 20px 5px;
+     border: 1px solid #00cccc;
+     padding: 5px;
+     color: #004d4d;
+     border-radius: 5px;
+}
+.password {
+     width: 100%;
+     margin: 26px 20px 5px;
+     border: 1px solid #00cccc;
+     padding: 5px;
+     color: #004d4d;
+     border-radius: 5px;
+}
+.email:focus, .password:focus {
+     border: 1px solid #004d4d;
+     color: #00cccc;
 }
 [class$="msg"] {
-	color: red;
-	font-size: 12px;
-	margin: 1px;
+     height: 24px;
+	 margin: 1px;
+	 padding-left: 20px;
+     text-align: center;
+	 font-size: 12px;
+     margin-bottom: 0px;
+     width: 100%;
+     color: red;
 }
 .i {
-	color: green;
+     color: #00cccc;
+}
+.login-form input[type=submit] {
+     background-color: #00cccc;
+     width: 30%;
+     color: white;
+     font-weight: bold;
+     padding: 5px 15px;
+     margin: 26px 0 30px 20px;
+     border-radius: 5px;
 }

@@ -10,7 +10,7 @@ import './Utils/FontAwsome';
 import rootReducer from './Reducers';
 import rootSaga from './Sagas';
 
-import LoginForm from './Containers/LoginForm';
+import RootRouter from './Routes';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -20,7 +20,7 @@ sagaMiddleware.run(rootSaga);
 
  ReactDOM.render(
      <Provider store={store}>
-         <LoginForm />
+         <RootRouter />
      </Provider>,
      document.getElementById('root')
  );

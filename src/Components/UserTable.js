@@ -9,12 +9,12 @@ class UserTable extends React.Component {
             <table className='table table-bordered user-table'>
                 <thead>
                     <tr>
-                        <th>id</th>
-                        <th>first_name</th>
-                        <th>last_name</th>
-                        <th>email</th>
-                        <th>role</th>
-                        <th>is_active</th>
+                        <th>ID</th>
+                        <th>FIRST NAME</th>
+                        <th>LAST NAME</th>
+                        <th>EMAIL</th>
+                        <th>ROLE</th>
+                        <th>IS_ACTIVE</th>
                     </tr>
                 </thead>
                 <tbody>

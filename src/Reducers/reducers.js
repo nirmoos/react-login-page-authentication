@@ -1,5 +1,5 @@
 
-function users (state=[], action) {
+export function users (state=[], action) {
     switch (action.type) {
         case 'UPDATE_STORE':
             return action.users;
@@ -8,4 +8,11 @@ function users (state=[], action) {
     }
 }
 
-export default users;
+export function token (state='', action) {
+    switch (action.type) {
+        case 'UPDATE_TOKEN':
+            return action.token;
+        default:
+            return state;
+    }
+}

@@ -7,9 +7,22 @@ export function validate_login (email, password) {
     }
 }
 
-export function update_store (users) {
+export function update_users (users) {
     return {
         type: 'UPDATE_STORE',
         users: users,
+    }
+}
+
+export function update_token (token) {
+    return {
+        type: 'UPDATE_TOKEN',
+        token: token,
+    }
+}
+
+export function user_logout () {
+    return {
+        type: 'USER_LOGOUT',
     }
 }
