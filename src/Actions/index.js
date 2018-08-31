@@ -26,3 +26,9 @@ export function user_logout () {
         type: 'USER_LOGOUT',
     }
 }
+
+export function clear_token () {
+    return {
+        type: 'CLEAR_TOKEN',
+    }
+}

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { call, put } from 'redux-saga/effects';
 
-import { update_users, update_token } from '../Actions';
+import { update_users, update_token, clear_token } from '../Actions';
 
 import getHistory from '../history';
 
@@ -19,6 +19,7 @@ export function* validateLogin (action) {
 
         let responseUsers = yield call(fetchUsersPromise, token);
         let users = responseUsers.data.users;
+
         yield put(update_users(users));
 
         getHistory().push('/users');
@@ -29,7 +30,9 @@ export function* validateLogin (action) {
 
 export function* userLogout () {
     try {
-        let logmeOut = yield call(fetchLogoutPromise, globalToken);
+        yield call(fetchLogoutPromise, globalToken);
+
+        yield put(clear_token());
 
         getHistory().push('/login');
     } catch (e) {

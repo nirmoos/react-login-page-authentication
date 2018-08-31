@@ -12,6 +12,8 @@ export function token (state='', action) {
     switch (action.type) {
         case 'UPDATE_TOKEN':
             return action.token;
+        case 'CLEAR_TOKEN':
+            return '';
         default:
             return state;
     }

@@ -7,8 +7,14 @@ class LoginForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
-            password: '',
+            email: {
+                value: '',
+                isActive: false,
+            },
+            password: {
+                value: '',
+                isActive: false,
+            },
         }
         this.emailPattern = /\w+@[a-z]{3,7}\.\w+/
         this.passwordPattern = /^[a-zA-Z]+([0-9]+[a-zA-Z]*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+|[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+[a-zA-Z]*[0-9]+)[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/
@@ -20,18 +26,24 @@ class LoginForm extends React.Component {
     }
     onChangeEmail(event) {
         this.setState({
-            email: event.target.value,
+            email: {
+                value: event.target.value,
+                isActive: true,
+            },
         });
     }
     onChangePassword(event) {
         this.setState({
-            password: event.target.value,
+            password: {
+                value: event.target.value,
+                isActive: true,
+            },
         });
     }
     onSubmit(event) {
         event.preventDefault();
-        if (this.validateItems(this.emailPattern, this.state.email))
-            this.props.validateLogin(this.state.email, this.state.password);
+        if (this.validateItems(this.emailPattern, this.state.email.value))
+            this.props.validateLogin(this.state.email.value, this.state.password.value);
     }
     validateItems(pattern, item) {
         return pattern.test(item);
@@ -41,20 +53,20 @@ class LoginForm extends React.Component {
             <div className="login-form-container">
     		    <form name="login-form" className="login-form" onSubmit={this.onSubmit}>
         			<input type="text" className="email" name="email" placeholder="Email..." onChange={this.onChangeEmail} />
-                    <p className='uname-msg'> {
-                        this.validateItems(this.emailPattern, this.state.email) ?
+                    {this.state.email.isActive && <p className='uname-msg'> {
+                        this.validateItems(this.emailPattern, this.state.email.value) ?
                             (<span className='i'><FontAwesomeIcon icon="check" /></span>) :
                             ('should be in the form: example@qburst.com')
-                    }</p>
+                    }</p>}
         			<input type="text" className="password" name="password" placeholder="Password..." onChange={this.onChangePassword} />
-                    <p className='pword-msg'>{
-                        this.state.password.length < 7 ?
+                    {this.state.password.isActive && <p className='pword-msg'>{
+                        this.state.password.value.length < 7 ?
                             ('should be atleast 7 characters long') : (
-                                this.validateItems(this.passwordPattern, this.state.password) ?
+                                this.validateItems(this.passwordPattern, this.state.password.value) ?
                                     (<span className='i'><FontAwesomeIcon icon="check" /></span>) :
                                     ('should start with a letter and contain atleast one letter and one special character')
                             )
-                    }</p>
+                    }</p>}
         			<input type="submit" value="Sign In" />
         		</form>
         	</div>
