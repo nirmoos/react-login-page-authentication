@@ -3,7 +3,7 @@ import React from 'react';
 import './LogoutButton.css';
 
 class LogoutButton extends React.Component {
-    constructor(props) {
+    constructor (props) {
         super(props);
         this.onClick = this.onClick.bind(this);
     }

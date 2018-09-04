@@ -7,6 +7,13 @@ export function validate_login (email, password) {
     }
 }
 
+export function authenticate_user (token) {
+    return {
+        type: 'AUTHENTICATE_USER',
+        token: token,
+    }
+}
+
 export function update_users (users) {
     return {
         type: 'UPDATE_STORE',
@@ -14,21 +21,14 @@ export function update_users (users) {
     }
 }
 
-export function update_token (token) {
+export function close_session () {
     return {
-        type: 'UPDATE_TOKEN',
-        token: token,
+        type: 'CLOSE_SESSION',
     }
 }
 
 export function user_logout () {
     return {
         type: 'USER_LOGOUT',
-    }
-}
-
-export function clear_token () {
-    return {
-        type: 'CLEAR_TOKEN',
     }
 }

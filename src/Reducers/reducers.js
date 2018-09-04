@@ -8,13 +8,24 @@ export function users (state=[], action) {
     }
 }
 
-export function token (state='', action) {
+export function authenticate (state=initialAuthenticateState, action) {
     switch (action.type) {
-        case 'UPDATE_TOKEN':
-            return action.token;
-        case 'CLEAR_TOKEN':
-            return '';
+        case 'AUTHENTICATE_USER':
+            return {
+                isAuthenticated: true,
+                token: action.token,
+            };
+        case 'CLOSE_SESSION':
+            return {
+                isAuthenticated: false,
+                token: '',
+            }
         default:
             return state;
     }
+}
+
+const initialAuthenticateState = {
+    isAuthenticated: false,
+    token: '',
 }
