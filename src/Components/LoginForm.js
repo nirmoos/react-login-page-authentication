@@ -60,7 +60,7 @@ class LoginForm extends React.Component {
                             'should be in the form: example@qburst.com'
                         )
                     }</p>}
-        			<input type="password" className="password" name="password" placeholder="Password..." onChange={this.onChangePassword} />
+        			<input type="text" className="password" name="password" placeholder="Password..." onChange={this.onChangePassword} />
                     {this.state.password.isActive && <p className='pword-msg'>{
                         this.state.password.value.length < 7 ? (
                             'should be atleast 7 characters long'

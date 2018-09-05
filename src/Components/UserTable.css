@@ -1,13 +1,11 @@
 .user-table {
-    width: 70%;
-    margin: 30px auto;
     border-radius: 9px;
     border: 1px solid #00cccc;
 }
-.user-table thead {
+thead {
     background-color: #00cccc;
     color: white;
 }
-.user-table tbody {
+tbody {
     color: #00cccc;
 }

@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import LoginForm from '../Containers/LoginForm';
-import LoggedIn from '../Apps/LoggedIn';
+import Home from '../Apps';
 
 import { GlobalHistory } from '../history';
 
@@ -23,7 +23,7 @@ const RootRouter = ({ isAuthenticated }) => (
                     )
                 );
             }} />
-            <PrivateRoute path='/users' isAuthenticated={isAuthenticated} component={LoggedIn} />
+            <PrivateRoute path='/users' isAuthenticated={isAuthenticated} component={Home} />
         </div>
     </BrowserRouter>
 );

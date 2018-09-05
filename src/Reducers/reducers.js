@@ -2,7 +2,8 @@
 export function users (state=[], action) {
     switch (action.type) {
         case 'UPDATE_STORE':
-            return action.users;
+        // console.log(state, action.users[0]);
+            return state.concat(action.users);
         default:
             return state;
     }

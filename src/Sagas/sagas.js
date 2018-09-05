@@ -1,12 +1,14 @@
 import axios from 'axios';
 
-import { call, put } from 'redux-saga/effects';
+import { call, put, select } from 'redux-saga/effects';
 
 import { update_users, authenticate_user, close_session } from '../Actions';
 
 import getHistory from '../history';
 
 let globalToken = '';
+
+const getAllUsers = state => state.users
 
 export function* validateLogin (action) {
     try {
@@ -17,12 +19,14 @@ export function* validateLogin (action) {
 
         yield put(authenticate_user(token));
 
-        let responseUsers = yield call(fetchUsersPromise, token);
-        let users = responseUsers.data.users;
-
-        yield put(update_users(users));
+        let responseUsers;
+        for (let pageNo=1; pageNo<=5; pageNo++) {
+            responseUsers = yield call(fetchUsersPromise, [token, pageNo]);
+            yield put(update_users(responseUsers.data.users));
+        }
 
         getHistory().push('/users');
+
     } catch (error) {
         // console.log(error);
     }
@@ -54,7 +58,7 @@ function fetchTokenPromise(action) {
         }
     });
 }
-function fetchUsersPromise(token) {
+function fetchUsersPromise([token, pageNo]) {
     return axios({
         method: 'get',
         url: 'http://10.2.0.132:3000/apis/admins/users.json',
@@ -65,8 +69,8 @@ function fetchUsersPromise(token) {
             'Authorization': 'Token token=' + token,
         },
         params: {
-            page: 1,
-            limit: 10,
+            page: pageNo,
+            limit: 14,
             approved: true,
         }
     });

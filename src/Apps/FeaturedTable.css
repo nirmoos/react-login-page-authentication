@@ -1,0 +1,20 @@
+.scrollable {
+    max-height: 296px;
+    overflow-y: auto;
+    display: inline-block;
+    margin: auto;
+}
+/* thead th, tbody td {
+    max-width: 19%;
+}
+tbody {
+    max-height: 296px;
+    overflow-y:hidden;
+}
+.scrollable {
+    width: 60%;
+} */
+.table-container {
+    width: 70%;
+    margin: 50px auto;
+}
